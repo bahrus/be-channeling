@@ -1,6 +1,6 @@
 # be-channeling
 
-be-channeling is a web component / decorator / behavior / custom attribute that serves a similar purpose, and shares similar [syntax'(https://github.com/bahrus/be-noticed/blob/baseline/types.d.ts) to [be-noticed](https://github.com/bahrus/be-noticed).
+be-channeling is a web component / decorator / behavior / custom attribute that serves a similar purpose, and shares similar [syntax](https://github.com/bahrus/be-noticed/blob/baseline/types.d.ts) to [be-noticed](https://github.com/bahrus/be-noticed).
 
 The difference is be-noticed is meant to be attached to individual elements, focusing on scenarios where there is no ambiguity about the origin of the event.
 
