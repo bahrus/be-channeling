@@ -28,7 +28,7 @@ Instead, be-channeling works with bubbling events, composed events, and captured
 
 "ifAllOf" and "ifNoneOf" allows us to filter events based on the values of properties of the triggering element.
 
-> Isn't this a violation of encapsulation, to be monitoring for events that are coming from inside (the ShadowDOM) of an element?
+> Isn't this a violation of encapsulation, to be monitoring for events that are coming from inside the (ShadowDOM) children of an element?
 
 Not really.  As we can see in this example, the button element is part of the light children used to define the template that xtal-vlist uses.
 
