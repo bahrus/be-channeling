@@ -10,8 +10,8 @@ export interface BeChannelingProps extends BeChannelingVirtualProps{
 }
 
 export interface IChannel extends INotify{
-    type: string;
-    ifPathHeadMatches: string;
+    eventFilter: string | Partial<Event>,
+    composedPathMatch: string;
 }
 
 export interface BeChannelingActions{

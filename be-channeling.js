@@ -3,14 +3,19 @@ import { register } from 'be-hive/register.js';
 export class BeChannelingController {
     #eventHandlers = {};
     async intro(proxy, target, beDecorProps) {
-        let params;
+        let channels;
         const attr = proxy.getAttribute('is-' + beDecorProps.ifWantsToBe);
         try {
-            params = JSON.parse(attr);
+            channels = JSON.parse(attr);
+            if (!Array.isArray(channels)) {
+                channels = [channels];
+            }
             const { hookUp } = await import('./hookUp.js');
-            for (const pram of params) {
-                const handler = await hookUp(target, pram.type, pram);
-                this.#eventHandlers[pram.type] = handler;
+            for (const channel of channels) {
+                const handler = await hookUp(target, channel);
+                let { eventFilter } = channel;
+                const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
+                this.#eventHandlers[type] = handler;
             }
         }
         catch (e) {

@@ -5,15 +5,20 @@ import {register} from 'be-hive/register.js';
 export class BeChannelingController implements BeChannelingActions{
     #eventHandlers: {[key: string]: ((e: Event) => void)} = {};
     async intro(proxy: Element & BeChannelingVirtualProps, target: Element, beDecorProps: BeDecoratedProps){
-        let params!: IChannel[];
+        let channels!: IChannel[];
         const attr = proxy.getAttribute('is-' + beDecorProps.ifWantsToBe!)!;
         try{
-            params = JSON.parse(attr);
+            channels = JSON.parse(attr);
+            if(!Array.isArray(channels)){
+                channels = [channels];
+            }
             const {hookUp} = await import ('./hookUp.js');
 
-            for(const pram of params){
-                const handler = await hookUp(target, pram.type, pram);
-                this.#eventHandlers[pram.type] = handler;
+            for(const channel of channels){
+                const handler = await hookUp(target, channel);
+                let {eventFilter} = channel;
+                const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type!;
+                this.#eventHandlers[type] = handler;
             }
         }catch(e){
             console.error({
