@@ -55,6 +55,9 @@ define<BeChannelingProps & BeDecoratedProps<BeChannelingProps, BeChannelingActio
             intro: 'intro',
             finale: 'finale',
         }
+    },
+    complexPropDefaults:{
+        controller: BeChannelingController,
     }
 });
 

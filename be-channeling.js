@@ -46,6 +46,9 @@ define({
             intro: 'intro',
             finale: 'finale',
         }
+    },
+    complexPropDefaults: {
+        controller: BeChannelingController,
     }
 });
 register(ifWantsToBe, upgrade, tagName);
