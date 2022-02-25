@@ -11,26 +11,55 @@ The most clear case for be-channeling is a host element that sponsors a (virtual
 Instead, be-channeling works with bubbling events, composed events, and captured events, and allows us to specify what actions to take by first filtering on the event based on css matching and other criteria.
 
 ```html
-<xtal-vlist be-channeling='[
-        {
-            "type": "click",
-            "ifPathHeadMatches": "button",
-            "ifAllOf": ["dataset.active"],
-            "ifNoneOf": ["disabled"],
+<xtal-vlist be-channeling='{
+            "eventFilter": "click",
+            "composedPathMatch": "button",
             "fn": "myHostMethod"
         }
-]'>
+}'>
     <template slot=row>
         <button>Click me</button>
     </template>
 </xtal-vlist>
 ```
 
-"ifAllOf" and "ifNoneOf" allows us to filter events based on the values of properties of the triggering element.
+Means "If the triggerng element is a button, then call myHostMethod from the host".
 
 > Isn't this a violation of encapsulation, to be monitoring for events that are coming from inside the (ShadowDOM) children of an element?
 
 Not really.  As we can see in this example, the button element is part of the light children used to define the template that xtal-vlist uses.
+
+The example above is basically the simplex example, but the syntax can scale to much larger scenarios:
+
+1.  If more than one event type to monitor for, use an array.
+2.  The eventFilter and composedPathMatch can each be objects, and allows for more complex event filtering.
+
+For example:
+
+```html
+<xtal-vlist be-channeling='{
+            "eventFilter": {
+                "type": "click",
+                "key": "enter",
+                "shiftKey": true,
+                "details":{
+                    "value": "true"
+                },
+                "composedPathMatch": "button",
+            },
+            "fn": "myHostMethod"
+        }
+}'>
+    <template slot=row>
+        <button>Click me</button>
+    </template>
+</xtal-vlist>
+```
+
+
+## More complex examples
+
+
 
 ## No, not JSON!
 
