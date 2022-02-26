@@ -1,6 +1,6 @@
 # be-channeling [WIP]
 
-*be-channeling* is a web component / decorator / behavior / custom attribute. 
+*be-channeling* is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns. 
 
 It serves a similar purpose, and shares similar [syntax](https://github.com/bahrus/be-noticed/blob/baseline/types.d.ts) to [be-noticed](https://github.com/bahrus/be-noticed).
 

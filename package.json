@@ -1,21 +1,41 @@
 {
   "name": "be-channeling",
   "version": "0.0.3",
-  "description": "",
-  "main": "index.js",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements"           
+  ],
+  "description": "be-channeling is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns.",
+  "main": "be-noticed.js",
+  "module": "be-noticed.js",
+  "exports":{
+    ".": "./be-channeling.js",
+    "./be-channeling.js": "./be-channeling.js",
+    "./hookUp.js": "./hookUp.js"
+  },
+  "files": [
+    "*.*"
+  ],
+  "types": "types.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-check": "package-check"
   },
   "dependencies": {
     "trans-render": "0.0.502",
     "be-hive": "0.0.34",
     "be-decorated": "0.0.87"
   },
+  "devDependencies": {
+    "@skypack/package-check": "0.2.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bahrus/be-channeling.git"
   },
-  "author": "",
+  "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bahrus/be-channeling/issues"
