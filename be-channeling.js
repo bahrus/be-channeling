@@ -11,11 +11,15 @@ export class BeChannelingController {
                 channels = [channels];
             }
             const { hookUp } = await import('./hookUp.js');
+            const { nudge } = await import('trans-render/lib/nudge.js');
             for (const channel of channels) {
                 const handler = await hookUp(target, channel);
                 let { eventFilter } = channel;
                 const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
                 this.#eventHandlers[type] = handler;
+                if (channel.nudge) {
+                    nudge(target);
+                }
             }
         }
         catch (e) {
