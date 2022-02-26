@@ -4,7 +4,7 @@
 
 It serves a similar purpose, and shares similar [syntax](https://github.com/bahrus/be-noticed/blob/baseline/types.d.ts) to [be-noticed](https://github.com/bahrus/be-noticed).
 
-The difference between then is this: *be-noticed*, unlike this component, is meant to be attached to individual elements, focusing on scenarios where there is no ambiguity about the origin of the event.
+The difference between them is this: *be-noticed*, unlike be-channeling, is meant to be attached to individual elements, focusing on scenarios where there is no ambiguity about the origin of the event.
 
 *be-channeling*, in contrast, is meant to be attached to elements that host lots of rapidly changing children.
 
@@ -34,7 +34,7 @@ Not really.  As we can see in this example, the button element is part of the li
 The example above is basically the simplest example, but the syntax can scale to much larger scenarios:
 
 1.  If more than one event type to monitor for, use an array.
-2.  The eventFilter and composedPathMatch can each be objects, and allows for more complex event filtering.
+2.  The eventFilter can be an object, and allows for more complex event filtering.
 
 For example:
 
