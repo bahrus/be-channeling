@@ -1,16 +1,16 @@
 {
   "name": "be-channeling",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [
     "web-components",
     "web-component",
     "custom-element",
-    "custom-elements"           
+    "custom-elements"
   ],
   "description": "be-channeling is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns.",
   "main": "be-noticed.js",
   "module": "be-noticed.js",
-  "exports":{
+  "exports": {
     ".": "./be-channeling.js",
     "./be-channeling.js": "./be-channeling.js",
     "./hookUp.js": "./hookUp.js"
