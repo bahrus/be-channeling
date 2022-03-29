@@ -2,7 +2,9 @@ export async function hookUp(target, channel) {
     let { doInit, eventFilter } = channel;
     const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
     const handler = async (e) => {
-        const { composedPathMatch } = channel;
+        const { composedPathMatch, debug } = channel;
+        if (debug)
+            debugger;
         const path = e.composedPath();
         if (e.path === undefined) {
             /**

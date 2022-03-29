@@ -1,3 +1,4 @@
+import { INotify } from '../trans-render/lib/types';
 import {IChannel} from './types';
 
 export async function hookUp(target: Element, channel: IChannel){
@@ -5,7 +6,8 @@ export async function hookUp(target: Element, channel: IChannel){
     const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type!;
 
     const handler = async (e: Event) => {
-        const {composedPathMatch} = channel;
+        const {composedPathMatch, debug} = channel;
+        if(debug) debugger;
         const path = e.composedPath();
         if((<any>e).path === undefined){
             /** 
