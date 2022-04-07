@@ -1,4 +1,5 @@
 import {define, BeDecoratedProps} from 'be-decorated/be-decorated.js';
+import {getVal} from 'be-decorated/upgrade.js';
 import { BeChannelingActions, BeChannelingProps, BeChannelingVirtualProps, IChannel } from './types';
 import {register} from 'be-hive/register.js';
 
@@ -6,7 +7,8 @@ export class BeChannelingController implements BeChannelingActions{
     #eventHandlers: {[key: string]: ((e: Event) => void)} = {};
     async intro(proxy: Element & BeChannelingVirtualProps, target: Element, beDecorProps: BeDecoratedProps){
         let channels!: IChannel[];
-        const attr = proxy.getAttribute('is-' + beDecorProps.ifWantsToBe!)!;
+        const val = getVal(target, beDecorProps.ifWantsToBe);
+        const attr = val[0]!;
         try{
             channels = JSON.parse(attr);
             if(!Array.isArray(channels)){

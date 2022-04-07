@@ -1,10 +1,12 @@
 import { define } from 'be-decorated/be-decorated.js';
+import { getVal } from 'be-decorated/upgrade.js';
 import { register } from 'be-hive/register.js';
 export class BeChannelingController {
     #eventHandlers = {};
     async intro(proxy, target, beDecorProps) {
         let channels;
-        const attr = proxy.getAttribute('is-' + beDecorProps.ifWantsToBe);
+        const val = getVal(target, beDecorProps.ifWantsToBe);
+        const attr = val[0];
         try {
             channels = JSON.parse(attr);
             if (!Array.isArray(channels)) {
