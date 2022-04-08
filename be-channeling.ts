@@ -1,38 +1,28 @@
 import {define, BeDecoratedProps} from 'be-decorated/be-decorated.js';
-import {getVal} from 'be-decorated/upgrade.js';
+import {doParse} from 'be-decorated/doParse.js';
 import { BeChannelingActions, BeChannelingProps, BeChannelingVirtualProps, IChannel } from './types';
 import {register} from 'be-hive/register.js';
 
 export class BeChannelingController implements BeChannelingActions{
     #eventHandlers: {[key: string]: ((e: Event) => void)} = {};
     async intro(proxy: Element & BeChannelingVirtualProps, target: Element, beDecorProps: BeDecoratedProps){
-        let channels!: IChannel[];
-        const val = getVal(target, beDecorProps.ifWantsToBe);
-        const attr = val[0]!;
-        try{
-            channels = JSON.parse(attr);
-            if(!Array.isArray(channels)){
-                channels = [channels];
-            }
-            const {hookUp} = await import ('./hookUp.js');
-            const {nudge} = await import ('trans-render/lib/nudge.js');
-            for(const channel of channels){
-                if(channel.debug) debugger;
-                const handler = await hookUp(target, channel);
-                let {eventFilter} = channel;
-                const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type!;
-                this.#eventHandlers[type] = handler;
-                if(channel.nudge){
-                    nudge(target);
-                }
-            }
-        }catch(e){
-            console.error({
-                e,
-                attr
-            });
-            return;
+        let channels = doParse(target, beDecorProps) as IChannel | IChannel[];
+        if(!Array.isArray(channels)){
+            channels = [channels];
         }
+        const {hookUp} = await import ('./hookUp.js');
+        const {nudge} = await import ('trans-render/lib/nudge.js');
+        for(const channel of channels){
+            if(channel.debug) debugger;
+            const handler = await hookUp(target, channel);
+            let {eventFilter} = channel;
+            const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type!;
+            this.#eventHandlers[type] = handler;
+            if(channel.nudge){
+                nudge(target);
+            }
+        }
+        
     }
 
     finale(proxy: Element & BeChannelingVirtualProps, target:Element, beDecorProps: BeDecoratedProps){
