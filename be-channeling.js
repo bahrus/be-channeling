@@ -1,25 +1,35 @@
 import { define } from 'be-decorated/be-decorated.js';
-import { doParse } from 'be-decorated/doParse.js';
 import { register } from 'be-hive/register.js';
 export class BeChannelingController {
     #eventHandlers = {};
     async intro(proxy, target, beDecorProps) {
-        let channels = doParse(target, beDecorProps);
-        if (!Array.isArray(channels)) {
-            channels = [channels];
-        }
-        const { hookUp } = await import('./hookUp.js');
-        const { nudge } = await import('trans-render/lib/nudge.js');
-        for (const channel of channels) {
-            if (channel.debug)
-                debugger;
-            const handler = await hookUp(target, channel);
-            let { eventFilter } = channel;
-            const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
-            this.#eventHandlers[type] = handler;
-            if (channel.nudge) {
-                nudge(target);
+        let channels;
+        const attr = proxy.getAttribute('is-' + beDecorProps.ifWantsToBe);
+        try {
+            channels = JSON.parse(attr);
+            if (!Array.isArray(channels)) {
+                channels = [channels];
             }
+            const { hookUp } = await import('./hookUp.js');
+            const { nudge } = await import('trans-render/lib/nudge.js');
+            for (const channel of channels) {
+                if (channel.debug)
+                    debugger;
+                const handler = await hookUp(target, channel);
+                let { eventFilter } = channel;
+                const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
+                this.#eventHandlers[type] = handler;
+                if (channel.nudge) {
+                    nudge(target);
+                }
+            }
+        }
+        catch (e) {
+            console.error({
+                e,
+                attr
+            });
+            return;
         }
     }
     finale(proxy, target, beDecorProps) {
