@@ -1,4 +1,4 @@
-import { INotify } from '../trans-render/lib/types';
+import { INotify, EventSettings } from '../trans-render/lib/types';
 import {IChannel} from './types';
 
 export async function hookUp(target: Element, channel: IChannel){
@@ -23,7 +23,7 @@ export async function hookUp(target: Element, channel: IChannel){
         }
         const {doAction} = await import ('trans-render/lib/doAction.js');
         const {getRecipientElement} = await import ('trans-render/lib/getRecipientElement.js');
-        const recipientElement = await getRecipientElement(target, channel);
+        const recipientElement = await getRecipientElement(target, channel as any as INotify & EventSettings);
         if(recipientElement !== null) doAction(target, recipientElement, channel, e);
     }
 
