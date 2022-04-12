@@ -1,4 +1,6 @@
-# be-channeling [WIP]
+# be-channeling
+
+[![Actions Status](https://github.com/bahrus/be-channeling/workflows/CI/badge.svg)](https://github.com/bahrus/be-channeling/actions?query=workflow%3ACI)
 
 *be-channeling* is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns. 
 
