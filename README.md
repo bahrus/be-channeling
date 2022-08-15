@@ -2,6 +2,12 @@
 
 [![Playwright Tests](https://github.com/bahrus/be-channeling/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-channeling/actions/workflows/CI.yml)
 
+[![How big is this package in your project?](https://img.shields.io/bundlephobia/minzip/be-channeling?style=for-the-badge)](https://bundlephobia.com/result?p=be-channeling)
+
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-definitive?compression=gzip">
+
+<a href="https://nodei.co/npm/be-channeling/"><img src="https://nodei.co/npm/be-channeling.png"></a>
+
 *be-channeling* is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns. 
 
 It serves a similar purpose, and shares similar [syntax](https://github.com/bahrus/be-noticed/blob/baseline/types.d.ts) to [be-noticed](https://github.com/bahrus/be-noticed).
@@ -19,8 +25,8 @@ Instead, be-channeling works with bubbling events, composed events, and captured
             "eventFilter": "click",
             "composedPathMatch": "button",
             "fn": "myHostMethod"
-        }
-}'>
+        }'
+>
     <template slot=row>
         <button>Click me</button>
     </template>
@@ -66,7 +72,7 @@ For example:
 - [x] First example above is supported.
 - [ ] Specify to stop propagation of event.
 - [ ] Specify to dispatch another event with a different name.
-- [ ] Allow filtering of eventFilter, based on matching the keys.
+- [x] Allow filtering of eventFilter, based on matching the keys.
 
 ## No, not JSON!
 
