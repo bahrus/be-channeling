@@ -8,8 +8,8 @@
     "custom-elements"
   ],
   "description": "be-channeling is a web component / decorator / behavior / custom attribute.  It responds to internal events of the component it adorns.",
-  "main": "be-noticed.js",
-  "module": "be-noticed.js",
+  "main": "be-channeling.js",
+  "module": "be-channeling.js",
   "exports": {
     ".": "./be-channeling.js",
     "./be-channeling.js": "./be-channeling.js",
