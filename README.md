@@ -4,7 +4,7 @@
 
 [![How big is this package in your project?](https://img.shields.io/bundlephobia/minzip/be-channeling?style=for-the-badge)](https://bundlephobia.com/result?p=be-channeling)
 
-<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-definitive?compression=gzip">
+<img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-channeling?compression=gzip">
 
 <a href="https://nodei.co/npm/be-channeling/"><img src="https://nodei.co/npm/be-channeling.png"></a>
 
