@@ -67,13 +67,6 @@ For example:
 ```
 
 
-## TODO's
-
-- [x] First example above is supported.
-- [ ] Specify to stop propagation of event.
-- [ ] Specify to dispatch another event with a different name.
-- [x] Allow filtering of eventFilter, based on matching the keys.
-
 ## No, not JSON!
 
 The [json-in-html](https://marketplace.visualstudio.com/items?itemName=andersonbruceb.json-in-html) VSCode plugin allows us to benefit from syntax color highlighting, and consequently avoid most syntax misfires, including while editing README files.  It is compatible with the web versions of VSCode.
