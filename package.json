@@ -27,7 +27,7 @@
   "dependencies": {
     "trans-render": "0.0.578",
     "be-hive": "0.0.57",
-    "be-decorated": "0.0.146"
+    "be-decorated": "0.0.147"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
