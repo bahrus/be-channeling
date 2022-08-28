@@ -1,6 +1,6 @@
 import { define } from 'be-decorated/be-decorated.js';
 import { register } from 'be-hive/register.js';
-export class BeChannelingController {
+export class BeChannelingController extends EventTarget {
     #eventHandlers = {};
     async intro(proxy, target, beDecorProps) {
         let channels;
@@ -23,12 +23,14 @@ export class BeChannelingController {
                     nudge(target);
                 }
             }
+            proxy.resolved = true;
         }
         catch (e) {
             console.error({
                 e,
                 attr
             });
+            proxy.rejected = e.toString();
             return;
         }
     }

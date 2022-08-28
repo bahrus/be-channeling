@@ -2,7 +2,7 @@ import {define, BeDecoratedProps} from 'be-decorated/be-decorated.js';
 import { BeChannelingActions, BeChannelingProps, BeChannelingVirtualProps, IChannel } from './types';
 import {register} from 'be-hive/register.js';
 
-export class BeChannelingController implements BeChannelingActions{
+export class BeChannelingController extends EventTarget implements BeChannelingActions{
     #eventHandlers: {[key: string]: ((e: Event) => void)} = {};
     async intro(proxy: Element & BeChannelingVirtualProps, target: Element, beDecorProps: BeDecoratedProps){
         let channels!: IChannel[];
@@ -24,11 +24,13 @@ export class BeChannelingController implements BeChannelingActions{
                     nudge(target);
                 }
             }
-        }catch(e){
+            proxy.resolved = true;
+        }catch(e: any){
             console.error({
                 e,
                 attr
             });
+            proxy.rejected = e.toString();
             return;
         }
     }
