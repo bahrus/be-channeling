@@ -30,7 +30,7 @@ export class BeChannelingController extends EventTarget {
                 e,
                 attr
             });
-            proxy.rejected = e.toString();
+            proxy.rejected = e.message;
             return;
         }
     }

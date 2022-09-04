@@ -25,9 +25,9 @@
     "package-check": "package-check"
   },
   "dependencies": {
-    "trans-render": "0.0.581",
-    "be-hive": "0.0.58",
-    "be-decorated": "0.0.148"
+    "trans-render": "0.0.583",
+    "be-hive": "0.0.59",
+    "be-decorated": "0.0.151"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
