@@ -1,8 +1,8 @@
 import {define, BeDecoratedProps} from 'be-decorated/be-decorated.js';
-import { BeChannelingActions, PP, Proxy, BeChannelingVirtualProps, IChannel } from './types';
+import { Actions, PP, Proxy, VirtualProps, IChannel } from './types';
 import {register} from 'be-hive/register.js';
 
-export class BeChannelingController extends EventTarget implements BeChannelingActions{
+export class BeChannelingController extends EventTarget implements Actions{
     #eventHandlers: {[key: string]: ((e: Event) => void)} = {};
     async intro(proxy: Proxy, target: Element, beDecorProps: BeDecoratedProps){
         let channels!: IChannel[];
@@ -50,7 +50,7 @@ const ifWantsToBe = 'channeling';
 
 const upgrade = '*';
 
-define<BeChannelingVirtualProps & BeDecoratedProps<BeChannelingVirtualProps, BeChannelingActions>, BeChannelingActions>({
+define<VirtualProps & BeDecoratedProps<VirtualProps, Actions>, Actions>({
     config:{
         tagName,
         propDefaults:{

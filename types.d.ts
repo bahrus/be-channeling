@@ -1,16 +1,16 @@
 import {INotify} from 'trans-render/lib/types';
 import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
 
-export interface BeChannelingEndUserProps{
+export interface EndUserProps{
     channels?: IChannel[],
 }
-export interface BeChannelingVirtualProps extends BeChannelingEndUserProps, MinimalProxy{
+export interface VirtualProps extends EndUserProps, MinimalProxy{
     
 }
 
-export type Proxy = Element & BeChannelingVirtualProps;
+export type Proxy = Element & VirtualProps;
 
-export interface ProxyProps extends BeChannelingVirtualProps{
+export interface ProxyProps extends VirtualProps{
     proxy: Proxy;
 }
 
@@ -21,7 +21,7 @@ export interface IChannel extends INotify{
     composedPathMatch: string;
 }
 
-export interface BeChannelingActions{
+export interface Actions{
     intro(proxy: Proxy, target: Element, beDecorProps: BeDecoratedProps): void;
     finale(proxy: Proxy, target:Element, beDecorProps: BeDecoratedProps): void;
 }
