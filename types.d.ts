@@ -2,7 +2,7 @@ import {INotify} from 'trans-render/lib/types';
 import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
 
 export interface EndUserProps{
-    channels?: IChannel[],
+    channels: IChannel | IChannel[],
 }
 export interface VirtualProps extends EndUserProps, MinimalProxy{
     
@@ -22,6 +22,6 @@ export interface IChannel extends INotify{
 }
 
 export interface Actions{
-    intro(proxy: Proxy, target: Element, beDecorProps: BeDecoratedProps): void;
+    onChannels(pp: PP): Promise<void>;
     finale(proxy: Proxy, target:Element, beDecorProps: BeDecoratedProps): void;
 }
