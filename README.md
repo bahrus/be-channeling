@@ -2,7 +2,11 @@
 
 [![Playwright Tests](https://github.com/bahrus/be-channeling/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-channeling/actions/workflows/CI.yml)
 
+Size of package, including custom element behavior framework (be-decorated):
+
 [![How big is this package in your project?](https://img.shields.io/bundlephobia/minzip/be-channeling?style=for-the-badge)](https://bundlephobia.com/result?p=be-channeling)
+
+Size of new code in this package:
 
 <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/be-channeling?compression=gzip">
 
