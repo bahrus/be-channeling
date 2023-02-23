@@ -37,6 +37,21 @@ Instead, be-channeling works with bubbling events, composed events, and captured
 </xtal-vlist>
 ```
 
+## Alternative syntax [TODO]
+
+```html
+<xtal-vlist be-channeling='
+    Set event filter to click.
+    Set composed path match to button.
+    Set fn to my host method.
+'
+>
+    <template slot=row>
+        <button>Click me</button>
+    </template>
+</xtal-vlist>
+```
+
 ... means "If the triggering element is a button, then call myHostMethod from the host".
 
 > Isn't this a violation of encapsulation, to be monitoring for events that are coming from inside the (Shadow DOM) children of an element?
@@ -77,7 +92,26 @@ The [json-in-html](https://marketplace.visualstudio.com/items?itemName=andersonb
 
 In addition, the [may-it-be](https://github.com/bahrus/may-it-be) transpiler allows us to edit .mts/.mjs files, and it compiles the files to static HTML files, which is another way to escape the purgatory that is raw JSON editing.  Using this technique, we can benefit from type checks on our attributes with no additional IDE plugins, and avoid all the non-ergonomic typing of quotes, and escaping.
 
+## Alternatively [TODO]
 
+```html
+<xtal-vlist be-channeling='
+Set event filter (
+    and type = click
+    and key = enter
+    and shift key = true
+    and details = (
+        and value = true
+    ) 
+).
+Set composed path match to button.
+Set fn to my host method.
+'>
+    <template slot=row>
+        <button>Click me</button>
+    </template>
+</xtal-vlist>
+```
 
 ## Viewing Locally
 
