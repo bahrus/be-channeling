@@ -97,11 +97,11 @@ In addition, the [may-it-be](https://github.com/bahrus/may-it-be) transpiler all
 ```html
 <xtal-vlist be-channeling='
 Set event filter (
-    and type = click
+    type = click
     and key = enter
     and shift key = true
     and details = (
-        and value = true
+        value = true
     ) 
 ).
 Set composed path match to button.
