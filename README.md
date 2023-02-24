@@ -96,16 +96,7 @@ In addition, the [may-it-be](https://github.com/bahrus/may-it-be) transpiler all
 
 ```html
 <xtal-vlist be-channeling='
-Set event filter (
-    type = click
-    and key = enter
-    and shift key = true
-    and details = (
-        value = true
-    ) 
-).
-Set composed path match to button.
-Set fn to my host method.
+Invoke my host method when a button emits click event with shiftKey set to true and key set to enter and where the details object has value "true".
 '>
     <template slot=row>
         <button>Click me</button>

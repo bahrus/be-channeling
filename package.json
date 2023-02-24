@@ -25,13 +25,13 @@
     "package-check": "package-check"
   },
   "dependencies": {
-    "trans-render": "0.0.665"
+    "trans-render": "0.0.666",
     "be-hive": "0.0.82",
-    "be-decorated": "0.0.223"
+    "be-decorated": "0.0.227"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
-    "@playwright/test": "1.30.0",
+    "@playwright/test": "1.31.1",
     "may-it-serve": "0.0.4",
     "xtal-shell": "0.0.27"
   },
