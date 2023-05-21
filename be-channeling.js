@@ -1,51 +1,58 @@
-import { define } from 'be-decorated/DE.js';
+import { BE, propDefaults, propInfo } from 'be-enhanced/BE.js';
+import { XE } from 'xtal-element/XE.js';
 import { register } from 'be-hive/register.js';
-export class BeChannelingController extends EventTarget {
+export class BeChanneling extends BE {
+    static get beConfig() {
+        return {
+            parse: true,
+            primaryProp: 'channels',
+            primaryPropReq: true
+        };
+    }
     #eventHandlers = {};
-    async onChannels({ channels, self, proxy }) {
+    async onChannels(self) {
+        const { channels, enhancedElement } = self;
         const channelsArr = Array.isArray(channels) ? channels : [channels];
         const { hookUp } = await import('./hookUp.js');
         for (const channel of channelsArr) {
             if (channel.debug)
                 debugger;
-            const handler = await hookUp(self, channel);
+            const handler = await hookUp(enhancedElement, channel);
             let { eventFilter } = channel;
             const type = typeof eventFilter === 'string' ? eventFilter : eventFilter.type;
             this.#eventHandlers[type] = handler;
             if (channel.nudge) {
                 const { nudge } = await import('trans-render/lib/nudge.js');
-                nudge(self);
+                nudge(enhancedElement);
             }
         }
-        proxy.resolved = true;
+        return {
+            resolved: true
+        };
     }
-    finale(proxy, target, beDecorProps) {
+    detach(detachedElement) {
         for (const key in this.#eventHandlers) {
             const handler = this.#eventHandlers[key];
-            target.removeEventListener(key, handler);
+            detachedElement.removeEventListener(key, handler);
         }
     }
 }
 const tagName = 'be-channeling';
-const ifWantsToBe = 'channeling';
+const ifWantsToBe = 'channelnig';
 const upgrade = '*';
-define({
+const xe = new XE({
     config: {
         tagName,
         propDefaults: {
-            upgrade,
-            ifWantsToBe,
-            finale: 'finale',
-            virtualProps: ['channels'],
-            primaryProp: 'channels',
-            primaryPropReq: true
+            ...propDefaults
+        },
+        propInfo: {
+            ...propInfo
         },
         actions: {
             onChannels: 'channels'
         }
     },
-    complexPropDefaults: {
-        controller: BeChannelingController,
-    }
+    superclass: BeChanneling
 });
 register(ifWantsToBe, upgrade, tagName);

@@ -1,20 +1,21 @@
 import {INotify} from 'trans-render/lib/types';
-import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
+import { ActionOnEventConfigs } from "trans-render/froop/types";
+import {IBE} from 'be-enhanced/types';
 
-export interface EndUserProps{
+export interface EndUserProps extends IBE{
     channels: IChannel | IChannel[],
 }
-export interface VirtualProps extends EndUserProps, MinimalProxy{
-    
-}
+export interface AllProps extends EndUserProps {}
 
-export type Proxy = Element & VirtualProps;
 
-export interface ProxyProps extends VirtualProps{
-    proxy: Proxy;
-}
+export type AP = AllProps;
 
-export type PP = ProxyProps;
+export type PAP = Partial<AP>;
+
+export type ProPAP = Promise<PAP>;
+
+export type POA = [PAP | undefined, ActionOnEventConfigs<PAP, Actions>];
+
 
 export interface IChannel extends INotify{
     eventFilter: string | Partial<Event>,
@@ -22,6 +23,6 @@ export interface IChannel extends INotify{
 }
 
 export interface Actions{
-    onChannels(pp: PP): Promise<void>;
-    finale(proxy: Proxy, target:Element, beDecorProps: BeDecoratedProps): void;
+    onChannels(self: this): ProPAP;
+    //finale(proxy: Proxy, target:Element, beDecorProps: BeDecoratedProps): void;
 }

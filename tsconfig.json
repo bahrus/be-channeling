@@ -10,12 +10,8 @@
 	},
 	"files":[
 		"be-channeling.ts"
-		//"playwright.config.ts",
-		//"tests/test1.spec.mts"
 	],
 	"exclude":[
-		"build",
-		"bower_components",
 		"node_modules"
 	]
 
